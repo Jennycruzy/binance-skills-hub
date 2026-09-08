@@ -19,6 +19,29 @@ changes, or cancels an order, and it holds no exchange credential.
 [`SKILL.md`](SKILL.md) — when to use it, how to call it, what a result means,
 and what it refuses to do.
 
+## What it does between requests
+
+The monitor runs unattended. Each cycle is reduced to the bands the limits
+already respond to, and when one of them moves it records the change on its own
+and says why it matters:
+
+```text
+AFTERBELL noticed a material change on NVDABUSDT.
+
+Reference market: RTH_OPEN -> CLOSED_WEEKEND
+Safety posture: Clear -> Smaller size
+
+The market that supplies the independent price changed session.
+The size AFTERBELL is willing to stand behind changed as a result.
+
+Nobody asked for this. No order was created and no authorization was issued.
+```
+
+Nothing is signed when this happens and no order is created. An authorization
+is bound to one specific proposal, and a background observation has no proposal
+behind it. The record exists so a later request is judged against a current
+picture rather than a stale one. Read it with `get_safety_posture`.
+
 ## What it is built on
 
 Measurements come from ordinary deterministic code, not from a model. A model
