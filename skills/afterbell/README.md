@@ -1,5 +1,8 @@
 # AFTERBELL — market protection for tokenized equities
 
+**AFTERBELL is an autonomous safety agent for AI agents trading Binance bStocks
+through Agent OS.**
+
 A bStock trades around the clock. The U.S. stock it takes its price from does
 not: it trades on weekday sessions and then stops updating. So a token can keep
 moving all weekend while the last independent price of the thing underneath it

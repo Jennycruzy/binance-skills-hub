@@ -1,11 +1,11 @@
 ---
 name: afterbell-calendar-risk
 description: >-
-  Safety check for Binance bStocks (tokenized U.S. equities). Use it before a
-  bStock order. It compares the always-open token market with the opening hours
-  and condition of the U.S. stock market underneath it, then returns the largest
-  order size it is willing to permit, with the reason. It never places, changes,
-  or cancels an order, and it holds no exchange credential.
+  Autonomous safety agent for AI agents trading Binance bStocks (tokenized U.S.
+  equities). Use before a bStock order: it compares token-market conditions with
+  the hours and condition of the underlying U.S. market and returns the largest
+  defensible amount, and it notices material safety changes on its own between
+  requests. Its limits are deterministic; it never places an order.
 license: MIT
 metadata:
   version: "1.0.0"
@@ -16,10 +16,16 @@ metadata:
 
 ## The idea
 
-bStocks can trade around the clock. The U.S. market that supplies their
-reference price is open for only part of the week. AFTERBELL measures that gap,
-checks the live token book, and limits new exposure when the independent price
-is old or the market is unusually difficult to trade.
+AFTERBELL is an autonomous safety agent that serves AI trading agents. bStocks
+can trade around the clock. The U.S. market that supplies their reference price
+is open for only part of the week. AFTERBELL measures that gap, checks the live
+token book, and limits new exposure when the independent price is old or the
+market is unusually difficult to trade.
+
+The trading agent owns the intent. AFTERBELL independently owns the safety
+limit. Binance Agent OS owns authenticated execution. The limits are computed by
+ordinary deterministic code: a language model may explain a result, it cannot
+choose the permitted amount or overturn a refusal.
 
 Use this skill before a bStock order. It returns the largest amount the system
 is willing to permit and a short explanation. It cannot place, amend, or cancel
